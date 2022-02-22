@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+<body>
+  <div id="greetings" class="header"> 
+    <h2 align="center" >Создай автомобиль своей мечты прямо сейчас!</h2>
+    <h2 align="center" >Кликай по разным частям машины, чтобы добавить их в корзину.</h2>
+  </div>
+  
+  <div id=finish_text class="header" style="display: none">
+  	<h1 align="center">Вы собрали автомобиль!</h1>
+  </div>
+  
+  <div align="center" id="car" class="container">
+    <img src="https://d.radikal.ru/d00/2202/c0/0a06334f58a7.jpg" />
+    <button type="button" id="left_wheel_button" class="left_wheel" </button>
+    <button type="button" id="right_wheel_button" class="right_wheel" </button>  
+    <button type="button" id="engine_button" class="engines" </button>
+  </div>
+  
+  <script>
+  
+  	var count = 0;
+    // Добавляем в корзину и скрываем левое колесо	
+    document.getElementById('left_wheel_button').onclick = function() {
+      document.getElementById('left_wheel_button').style.display = "none";
+      count = count + 1; 
+      if (count==3) Finishing();
+      }
+
+    // Добавляем в корзину и скрываем правое колесо	
+    document.getElementById('right_wheel_button').onclick = function() {
+      document.getElementById('right_wheel_button').style.display = "none";
+      count = count + 1;
+      if (count==3) Finishing();
+      }
+
+    // Добавляем в корзину и скрываем двигатель
+    document.getElementById('engine_button').onclick = function() {
+      document.getElementById('engine_button').style.display = "none";
+      count = count + 1; 
+      if (count==3) Finishing();
+      }
+      
+    // Cкрываем приветствие и картинку, показываем финальную надпись после нажатия кнопки "Завершить сборку".
+    // проверка на то, что все товары добавлены      
+    function Finishing() {
+      if (count==3) {
+        document.getElementById('car').hidden = true;
+        document.getElementById('greetings').hidden = true;
+        document.getElementById("finish_text").style.display = "block";
+        }
+     }  
+
+    // проверка на то, что все товары добавлены
+    if (count==3) Finishing();
+  </script>
+   
+
+  <style>
+      
+  .header {
+  	margin: auto;
+    position: relative;
+    width: 50%;
+  }
+  
+  .container {
+  	margin: auto;
+    position: relative;
+    width: 50%;
+  }
+
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .container .left_wheel {
+    position: absolute;
+    top: 74%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    padding: 25px 25px;
+    cursor: pointer;
+    border-radius: 25px;
+    opacity: 0.0;
+  }
+
+  .container .right_wheel {
+    position: absolute;
+    top: 73%;
+    left: 82.5%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    padding: 25px 25px;
+    cursor: pointer;
+    border-radius: 25px;
+    opacity: 0.0;
+  	}
+    
+  .container .engines {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    font-size: 5px;
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 25px;
+    opacity: 0.0;
+  }
+
+  </style>
+
+</body>
+</html>
